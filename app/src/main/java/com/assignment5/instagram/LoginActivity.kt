@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.parse.ParseObject
+import com.parse.ParseUser
 
 
 /**
@@ -20,7 +21,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // set click listener to login button & grab the username and password
+        // set click listener to login button & grab the username and password for logging in
         findViewById<Button>(R.id.btn_login_button).setOnClickListener {
             val etUsername = findViewById<EditText>(R.id.et_username).text.toString()
             val etPassword = findViewById<EditText>(R.id.et_password).text.toString()
@@ -29,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
 
         /**
          * Testing initial connection
-         */
+
         // create a ParseObject to test the connection
         val parseObject: ParseObject = ParseObject("TestConnectionClass")
         parseObject.put("message", "Test message from Simple-Instagram Android app. Parse is now connected!")
@@ -40,12 +41,25 @@ class LoginActivity : AppCompatActivity() {
                 Log.d(TAG, "Object saved!")
             }
         }
+        */
     }
 
 
     // make network call to log in the user if they have the right info and already have an account
-    private fun loginUser(etUsername: String, etPassword: String) {
-        Toast.makeText(this, "$etUsername\n$etPassword", Toast.LENGTH_SHORT).show()  // for now, just toast a message
+    private fun loginUser(username: String, password: String) {
+        // Toast.makeText(this, "$username\n$password", Toast.LENGTH_SHORT).show()  // for now, just toast a message
         // TODO("implement functionality to log the user in to the app")
+        ParseUser.logInInBackground(username, password, ({ user, e ->
+            if (user != null) {  // user has successfully logged in
+                Log.i(TAG, "$username successfully logged in!")
+                Toast.makeText(this, "Successfully logged in!", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                // login failed. look at ParseException to see what happened
+                Toast.makeText(this, "Unable to log in. Try again later!", Toast.LENGTH_SHORT).show()
+                e.printStackTrace()
+            }
+            })
+        )
     }
 }
