@@ -16,7 +16,7 @@ class Post : ParseObject() {
     companion object {
         private const val KEY_CAPTION = "caption"
         private const val KEY_IMAGE = "image"
-        private const val KEY_USER = "user"
+        const val KEY_USER = "user"
     }
 
     // create getters & setters. Every post has a caption, image & user
