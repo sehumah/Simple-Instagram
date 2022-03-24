@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 
 /**
@@ -25,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
 
     // make network call to log in the user if they have the right info and already have an account
     private fun loginUser(etUsername: String, etPassword: String) {
+        Toast.makeText(this, "$etUsername\n$etPassword", Toast.LENGTH_SHORT).show()  // for now, just toast a message
         // TODO("implement functionality to log the user in to the app")
     }
 }
