@@ -2,15 +2,15 @@
 
 **Simple-Instagram** is a photo sharing app similar to Instagram but using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: **6** hours spent in total
 
 ## User Stories
 
 The following **required** functionality is completed:
 
-- [ ] User can sign up to create a new account using Parse authentication.
-- [ ] User can log in and log out of his or her account.
-- [ ] The current signed in user is persisted across app restarts.
+- [x] User can sign up to create a new account using Parse authentication.
+- [x] User can log in and log out of his or her account.
+- [x] The current signed in user is persisted across app restarts.
 - [ ] User can take a photo, add a caption, and post it to "Instagram".
 
 The following **optional** features are implemented:
@@ -21,7 +21,10 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] List anything else that you can get done to improve the app functionality!
+    - If user already has an account and clicks **sign up** button, they're notified to click login button instead
+    - If user does not have an account and clicks on **log in** button, they notified to click sign up button instead
+    - Add logout button in the app bar menu to enable current logged in user to log out and navigate to signup/login screen
 
 ## Video Walkthrough
 
@@ -29,7 +32,7 @@ Here's a walkthrough of implemented user stories:
 
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+GIF created with [Peek](https://github.com/phw/peek).
 
 ## Notes
 
