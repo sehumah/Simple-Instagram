@@ -1,5 +1,6 @@
 package com.assignment5.instagram
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -53,6 +54,7 @@ class LoginActivity : AppCompatActivity() {
             if (user != null) {  // user has successfully logged in
                 Log.i(TAG, "$username successfully logged in!")
                 Toast.makeText(this, "Successfully logged in!", Toast.LENGTH_SHORT).show()
+                navigateToMainActivity()
             }
             else {
                 // login failed. look at ParseException to see what happened
@@ -61,5 +63,12 @@ class LoginActivity : AppCompatActivity() {
             }
             })
         )
+    }
+
+
+    // take the user to MainActivity once they successfully log in
+    private fun navigateToMainActivity() {
+        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+        startActivity(intent)
     }
 }
