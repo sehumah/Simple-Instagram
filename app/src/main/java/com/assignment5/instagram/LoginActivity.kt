@@ -74,11 +74,11 @@ class LoginActivity : AppCompatActivity() {
         newUser.signUpInBackground { e ->
             if (e == null) {
                 // user has successfully created a new account
-                // TODO: show a successful sign up Toast message
-                // TODO: navigate the user to main activity
+                Toast.makeText(this, "Successfully signed $username up!", Toast.LENGTH_SHORT).show()
+                navigateToMainActivity()
             }
             else {
-                // todo: show an unsuccessful sign up toast
+                Toast.makeText(this, "Unable to sign you up. Try again later!", Toast.LENGTH_SHORT).show()
                 e.printStackTrace()  // sign up didn't succeed. look at the parse exception to figure out what happened
             }
         }
