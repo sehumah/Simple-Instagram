@@ -70,5 +70,6 @@ class LoginActivity : AppCompatActivity() {
     private fun navigateToMainActivity() {
         val intent = Intent(this@LoginActivity, MainActivity::class.java)
         startActivity(intent)
+        finish()  // to prevent user from going back to login page after successfully logging in
     }
 }
