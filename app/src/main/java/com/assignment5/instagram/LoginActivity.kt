@@ -73,12 +73,14 @@ class LoginActivity : AppCompatActivity() {
 
         // sign the user up in the background
         newUser.signUpInBackground { e ->
-            if (e == null) {
-                // user has successfully created a new account
+            if (e == null) {  // user has successfully created a new account
+                Log.i(TAG, "$username successfully signed up!")
                 Toast.makeText(this, "Successfully signed $username up!", Toast.LENGTH_SHORT).show()
                 navigateToMainActivity()
             }
             else {
+                // todo: check if user's account already exists and is trying to sign up again. Tell them to click login instead if they have an account
+                // todo: else if another problem, use the below Toast message instead and print the stack trace
                 Toast.makeText(this, "Unable to sign you up. Try again later!", Toast.LENGTH_SHORT).show()
                 e.printStackTrace()  // sign up didn't succeed. look at the parse exception to figure out what happened
             }
@@ -95,8 +97,10 @@ class LoginActivity : AppCompatActivity() {
                 navigateToMainActivity()
             }
             else {
+                // todo: check if user doesn't have an account & tell them to click sign up to create one instead
+                // todo: else if another problem, show the below Toast message instead & print the stack trace
                 e.printStackTrace()  // login failed. look at ParseException to see what happened
-                Toast.makeText(this, "Unable to log in. Try again later!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Unable to log you in. Try again later!", Toast.LENGTH_SHORT).show()
             }
             })
         )
