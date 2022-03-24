@@ -2,6 +2,7 @@ package com.assignment5.instagram
 
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.media.Image
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,10 +16,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.FileProvider
-import com.parse.FindCallback
-import com.parse.ParseException
-import com.parse.ParseQuery
-import com.parse.ParseUser
+import com.parse.*
 import java.io.File
 
 
@@ -52,7 +50,16 @@ class MainActivity : AppCompatActivity() {
             // grab the caption that the user has inputted
             val caption = findViewById<EditText>(R.id.et_caption).text.toString()
             val user = ParseUser.getCurrentUser()
-            submitPost(caption, user)
+            if (photoFile == null && caption == "") {
+                Toast.makeText(this, "Can't submit an empty post!", Toast.LENGTH_SHORT).show()
+            }
+            else if (photoFile != null && caption != "") { // photo detected but no caption
+                submitPost(caption, user, photoFile!!)
+            }
+            else {
+                Toast.makeText(this, "Error, image or caption is empty!", Toast.LENGTH_SHORT).show()
+                Log.e(TAG, "Error. Image or caption field is empty!")
+            }
         }
 
 
@@ -83,7 +90,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun onLaunchCamera() {
+    private fun onLaunchCamera() {
         // create Intent to take a picture and return control to the calling application
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         // Create a File reference for future access
@@ -110,7 +117,7 @@ class MainActivity : AppCompatActivity() {
 
 
     // Returns the File for a photo stored on disk given the fileName
-    fun getPhotoFileUri(fileName: String): File {
+    private fun getPhotoFileUri(fileName: String): File {
         // Get safe storage directory for photos
         // Use `getExternalFilesDir` on Context to access package-specific directories.
         // This way, we don't need to request external read/write runtime permissions.
@@ -128,9 +135,10 @@ class MainActivity : AppCompatActivity() {
 
 
     // submit user's post to server
-    private fun submitPost(caption: String, user: ParseUser) {
+    private fun submitPost(caption: String, user: ParseUser, photoFile: File) {
         // create the post object to send to the server
         val post = Post()
+        post.setImage(ParseFile(photoFile))
         post.setCaption(caption)
         post.setUser(user)
         post.saveInBackground { exception ->
