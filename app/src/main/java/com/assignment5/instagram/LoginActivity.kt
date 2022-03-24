@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // set click listener to login button & grab the username and password for logging in
-        findViewById<Button>(R.id.btn_login_button).setOnClickListener {
+        findViewById<Button>(R.id.button_login).setOnClickListener {
             val etUsername = findViewById<EditText>(R.id.et_username).text.toString()
             val etPassword = findViewById<EditText>(R.id.et_password).text.toString()
             loginUser(etUsername, etPassword)
