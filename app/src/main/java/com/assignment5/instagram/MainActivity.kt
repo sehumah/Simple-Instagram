@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import com.parse.FindCallback
 import com.parse.ParseException
 import com.parse.ParseQuery
+import com.parse.ParseUser
 
 
 /**
@@ -26,8 +29,58 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        queryForPosts()
+        /**
+         * Let the user have a space for:
+         *  1. setting the caption of the post
+         *  2. a button to launch the camera to take a photo
+         *  3. an image view to show the photo the user has taken
+         *  4. a button to send and save the post
+         */
+
+        // send post to server
+        findViewById<Button>(R.id.button_submit).setOnClickListener {
+            // grab the caption that the user has inputted
+            val caption = findViewById<EditText>(R.id.et_caption).text.toString()
+            val user = ParseUser.getCurrentUser()
+            submitPost(caption, user)
+        }
+
+
+        // launch camera to let user take a picture
+        findViewById<Button>(R.id.button_take_photo).setOnClickListener {
+            takePhoto()
+        }
+
+        // queryForPosts()
     }
+
+
+    // submit user's post to server
+    private fun submitPost(caption: String, user: ParseUser) {
+        // create the post object to send to the server
+        val post = Post()
+        post.setCaption(caption)
+        post.setUser(user)
+        post.saveInBackground { exception ->
+            if (exception != null) {  // something's gone wrong
+                Toast.makeText(this, "Something went wrong. Couldn't save post!", Toast.LENGTH_SHORT).show()
+                Log.e(TAG, "Error while saving post!")
+                exception.printStackTrace()
+            }
+            else {
+                Toast.makeText(this, "Successfully saved post!", Toast.LENGTH_SHORT).show()
+                Log.i(TAG, "Successfully saved post!")
+                // todo: reset caption field to be empty again
+                // todo: reset the image view to be empty
+            }
+        }
+    }
+
+    // access phone's camera to take photo
+    private fun takePhoto() {
+        Toast.makeText(this, "Take Photo button clicked!", Toast.LENGTH_SHORT).show()
+    }
+
 
     // make a query for all posts from the server, todo: replace with something sophisticated
     private fun queryForPosts() {
