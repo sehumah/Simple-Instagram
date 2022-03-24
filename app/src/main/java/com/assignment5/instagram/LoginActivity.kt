@@ -54,10 +54,32 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
+    // make network call to sign up a user with their username and password if they don't have an account
+    private fun signUpUser(username: String, password: String){
+        // create a new ParseUser object for the user
+        val newUser: ParseUser = ParseUser()
+
+        // set the fields for the user to be created
+        newUser.username = username
+        newUser.setPassword(password)
+
+        // sign the user up in the background
+        newUser.signUpInBackground { e ->
+            if (e == null) {
+                // user has successfully created a new account
+                // TODO: show a successful sign up Toast message
+                // TODO: navigate the user to main activity
+            }
+            else {
+                // todo: show an unsuccessful sign up toast
+                e.printStackTrace()  // sign up didn't succeed. look at the parse exception to figure out what happened
+            }
+        }
+    }
+
+
     // make network call to log in the user if they have the right info and already have an account
     private fun loginUser(username: String, password: String) {
-        // Toast.makeText(this, "$username\n$password", Toast.LENGTH_SHORT).show()  // for now, just toast a message
-        // TODO("implement functionality to log the user in to the app")
         ParseUser.logInInBackground(username, password, ({ user, e ->
             if (user != null) {  // user has successfully logged in
                 Log.i(TAG, "$username successfully logged in!")
@@ -65,8 +87,7 @@ class LoginActivity : AppCompatActivity() {
                 navigateToMainActivity()
             }
             else {
-                // login failed. look at ParseException to see what happened
-                e.printStackTrace()
+                e.printStackTrace()  // login failed. look at ParseException to see what happened
                 Toast.makeText(this, "Unable to log in. Try again later!", Toast.LENGTH_SHORT).show()
             }
             })
