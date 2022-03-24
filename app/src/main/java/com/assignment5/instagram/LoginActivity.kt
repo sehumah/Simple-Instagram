@@ -22,6 +22,14 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        /**
+         * Check if there's a current user that is already logged in | and prevent the app from taking them to the login page again
+         * If there is, take them to MainActivity
+         */
+        if (ParseUser.getCurrentUser() != null) {
+            navigateToMainActivity()
+        }
+
         // set click listener to login button & grab the username and password for logging in
         findViewById<Button>(R.id.btn_login_button).setOnClickListener {
             val etUsername = findViewById<EditText>(R.id.et_username).text.toString()
