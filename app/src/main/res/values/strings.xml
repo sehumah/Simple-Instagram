@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Simple-Instagram</string>
+    <string name="back4app_server_url">back4app server url goes here</string>
+    <string name="back4app_app_id">back4app app id goes here</string>
+    <string name="back4app_client_key">back4app client key goes here</string>
 </resources>
