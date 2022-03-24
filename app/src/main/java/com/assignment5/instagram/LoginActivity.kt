@@ -56,8 +56,8 @@ class LoginActivity : AppCompatActivity() {
             }
             else {
                 // login failed. look at ParseException to see what happened
-                Toast.makeText(this, "Unable to log in. Try again later!", Toast.LENGTH_SHORT).show()
                 e.printStackTrace()
+                Toast.makeText(this, "Unable to log in. Try again later!", Toast.LENGTH_SHORT).show()
             }
             })
         )
