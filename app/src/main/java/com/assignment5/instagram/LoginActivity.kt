@@ -23,6 +23,22 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         /**
+         * Testing initial connection
+
+        // create a ParseObject to test the connection
+        val parseObject: ParseObject = ParseObject("TestConnectionClass")
+        parseObject.put("message", "Test message from Simple-Instagram Android app. Parse is now connected!")
+        parseObject.saveInBackground {
+            if (it != null) {
+                it.localizedMessage?.let { message -> Log.e(TAG, message) }
+            }
+            else {
+                Log.d(TAG, "Object saved!")
+            }
+        }
+        */
+
+        /**
          * Check if there's a current user that is already logged in | and prevent the app from taking them to the login page again
          * If there is, take them to MainActivity
          */
@@ -43,21 +59,6 @@ class LoginActivity : AppCompatActivity() {
             val etPassword = findViewById<EditText>(R.id.et_password).text.toString()
             signUpUser(etUsername, etPassword)
         }
-
-        /**
-         * Testing initial connection
-
-        // create a ParseObject to test the connection
-        val parseObject: ParseObject = ParseObject("TestConnectionClass")
-        parseObject.put("message", "Test message from Simple-Instagram Android app. Parse is now connected!")
-        parseObject.saveInBackground {
-            if (it != null) {
-                it.localizedMessage?.let { message -> Log.e(TAG, message) }
-            } else {
-                Log.d(TAG, "Object saved!")
-            }
-        }
-        */
     }
 
 
