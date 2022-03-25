@@ -37,28 +37,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /**
-         * Let the user have a space for:
-         *  1. setting the caption of the post
-         *  2. a button to launch the camera to take a photo
-         *  3. an image view to show the photo the user has taken
-         *  4. a button to send and save the post
-         */
-
         // send post to server
         findViewById<Button>(R.id.button_submit).setOnClickListener {
             // grab the caption that the user has inputted
             val caption = findViewById<EditText>(R.id.et_caption).text.toString()
             val user = ParseUser.getCurrentUser()
-            if (photoFile == null && caption == "") {
-                Toast.makeText(this, "Can't submit an empty post!", Toast.LENGTH_SHORT).show()
+            if (photoFile == null && caption == "") {  // check if both fields are null
+                Toast.makeText(this, "Post is empty!", Toast.LENGTH_SHORT).show()
             }
-            else if (photoFile != null && caption != "") { // photo detected but no caption
+            else if (photoFile == null && caption != "") {  // check if photo field is null
+                Toast.makeText(this, "No image found. Please add a photo!", Toast.LENGTH_SHORT).show()
+            }
+            else if (photoFile != null && caption == "") { // check if caption field is null
+                Toast.makeText(this, "No caption found. Please add a caption!", Toast.LENGTH_SHORT).show()
+            }
+            else if (photoFile != null && caption != "") {  // both fields are filled, submit the post
                 submitPost(caption, user, photoFile!!)
             }
-            else {
-                Toast.makeText(this, "Error, image or caption is empty!", Toast.LENGTH_SHORT).show()
-                Log.e(TAG, "Error. Image or caption field is empty!")
+            else {  // some other error
+                Toast.makeText(this, "Error sending post. Please try again later!", Toast.LENGTH_SHORT).show()
+                Log.e(TAG, "Error. Could not send post at this moment!")
             }
         }
 
@@ -187,16 +185,21 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    // handle clicks on an app bar menu item
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.logout) {
-            // navigate to login/signup screen
 
-            // todo: navigating to login activity doesn't seem to be working, figure it out later
+            // log the current user out if they click the logout button
+            ParseUser.logOut()
+            val currentUser: ParseUser = ParseUser.getCurrentUser()  // this will now be null
+
+            // todo: navigating to login activity doesn't seem to be working so far, figure it out later
+            // then navigate to login/signup screen
             // val intent = Intent(this@MainActivity, LoginActivity::class.java)
             // startActivity(intent)
 
             // just implement a toast for now
-            Toast.makeText(this, "Logout button clicked!", Toast.LENGTH_SHORT).show()
+            // Toast.makeText(this, "Logout button clicked!", Toast.LENGTH_SHORT).show()
         }
         return super.onOptionsItemSelected(item)
     }
