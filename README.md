@@ -2,7 +2,7 @@
 
 **Simple-Instagram** is a photo sharing app similar to Instagram but using Parse as its backend.
 
-Time spent: **11** hours spent in total
+Time spent: **16** hours spent in total
 
 ## User Stories
 
@@ -25,6 +25,7 @@ The following **additional** features are implemented:
     - If user already has an account and clicks **sign up** button, they're notified to click login button instead
     - If user does not have an account and clicks on **log in** button, they notified to click sign up button instead
     - Add logout button in the app bar menu to enable current logged in user to log out and navigate to signup/login screen
+    - Added a color tint to the background to indicate to the user that a photo goes there
 
 ## Video Walkthrough
 
