@@ -19,9 +19,9 @@ class Post : ParseObject() {
         const val KEY_USER = "user"
     }
 
-    // create getters & setters. Every post has a caption, image & user
+    // Every post has a caption, image & a user. create getters & setters for those fields
 
-    // Getters
+    /*   Getters   */
     fun getCaption() : String? {
         return getString(KEY_CAPTION)
     }
@@ -34,7 +34,8 @@ class Post : ParseObject() {
         return getParseUser(KEY_USER)
     }
 
-    // Setters
+
+    /*   Setters   */
     fun setCaption(caption: String) {
         put(KEY_CAPTION, caption)
     }
@@ -46,5 +47,4 @@ class Post : ParseObject() {
     fun setUser(user: ParseUser) {
         put(KEY_USER, user)
     }
-
 }
