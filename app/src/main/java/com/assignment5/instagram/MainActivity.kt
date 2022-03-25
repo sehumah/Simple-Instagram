@@ -148,6 +148,11 @@ class MainActivity : AppCompatActivity() {
             else {
                 Toast.makeText(this, "Successfully saved post!", Toast.LENGTH_SHORT).show()
                 Log.i(TAG, "Successfully saved post!")
+
+                // launch new mainactivity intent & close the old one for now, until discovering an even better solution
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
                 // todo: reset caption field to be empty again
                 // todo: reset the image view to be empty
             }
