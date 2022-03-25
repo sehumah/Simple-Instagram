@@ -132,4 +132,53 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageView
+        android:id="@+id/iv_home_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.253"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_baseline_home_24" />
+
+    <ImageView
+        android:id="@+id/iv_search_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_home_icon"
+        app:srcCompat="@drawable/ic_baseline_search_24" />
+
+    <ImageView
+        android:id="@+id/iv_shopping_cart_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_profile_icon"
+        app:srcCompat="@drawable/ic_baseline_shopping_basket_24" />
+
+    <ImageView
+        android:id="@+id/iv_profile_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.746"
+        app:srcCompat="@drawable/ic_baseline_account_circle_24" />
+
+    <ImageView
+        android:id="@+id/iv_reels_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_shopping_cart_icon"
+        app:layout_constraintStart_toEndOf="@+id/iv_search_icon"
+        app:srcCompat="@drawable/ic_baseline_smart_display_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
