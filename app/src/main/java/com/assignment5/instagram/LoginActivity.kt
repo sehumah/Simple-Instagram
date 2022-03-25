@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
         */
 
         /**
-         * Check if there's a current user that is already logged in | and prevent the app from taking them to the login page again
+         * Check if there's a current user that is already logged in and prevent the app from taking them to the login page again
          * If there is, take them to MainActivity
          */
         if (ParseUser.getCurrentUser() != null) {
