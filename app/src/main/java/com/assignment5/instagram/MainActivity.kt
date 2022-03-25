@@ -11,10 +11,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.FileProvider
 import com.parse.*
 import java.io.File
@@ -148,6 +145,10 @@ class MainActivity : AppCompatActivity() {
             else {
                 Toast.makeText(this, "Successfully saved post!", Toast.LENGTH_SHORT).show()
                 Log.i(TAG, "Successfully saved post!")
+
+                // display the progress bar while post is being submitted
+                val pbSubmittingPost = findViewById<ProgressBar>(R.id.pb_submitting_post)
+                pbSubmittingPost.visibility = ProgressBar.VISIBLE
 
                 // launch new mainactivity intent & close the old one for now, until discovering an even better solution
                 val intent = Intent(this, MainActivity::class.java)
