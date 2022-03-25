@@ -90,6 +90,7 @@
         android:id="@+id/iv_image_post"
         android:layout_width="300dp"
         android:layout_height="300dp"
+        android:background="#a9a9a9"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/et_caption"
         app:layout_constraintEnd_toEndOf="parent"
