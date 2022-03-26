@@ -50,14 +50,40 @@ class LoginActivity : AppCompatActivity() {
         findViewById<Button>(R.id.button_login).setOnClickListener {
             val etUsername = findViewById<EditText>(R.id.et_username).text.toString()
             val etPassword = findViewById<EditText>(R.id.et_password).text.toString()
-            loginUser(etUsername, etPassword)
+
+            // check if username or password field is empty and notify the user
+            if (etUsername.isEmpty() && etPassword.isEmpty()) {  // both fields are empty
+                Toast.makeText(this, "Enter a username and password!", Toast.LENGTH_SHORT).show()
+            }
+            else if (etUsername.isEmpty() && etPassword.isNotEmpty()) {  // only username field is empty
+                Toast.makeText(this, "Enter a username!", Toast.LENGTH_SHORT).show()
+            }
+            else if (etPassword.isEmpty() && etUsername.isNotEmpty()) {  // only password field is empty
+                Toast.makeText(this, "Enter a password!", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                loginUser(etUsername, etPassword)
+            }
         }
 
         // set click listener to signup button & grab the username and password for signing up
         findViewById<Button>(R.id.button_signup).setOnClickListener {
             val etUsername = findViewById<EditText>(R.id.et_username).text.toString()
             val etPassword = findViewById<EditText>(R.id.et_password).text.toString()
-            signUpUser(etUsername, etPassword)
+
+            // check if username or password field is empty and notify the user
+            if (etUsername.isEmpty() && etPassword.isEmpty()) {  // both fields are empty
+                Toast.makeText(this, "Enter a username and password!", Toast.LENGTH_SHORT).show()
+            }
+            else if (etUsername.isEmpty() && etPassword.isNotEmpty()) {  // only username field is empty
+                Toast.makeText(this, "Enter a username!", Toast.LENGTH_SHORT).show()
+            }
+            else if (etPassword.isEmpty() && etUsername.isNotEmpty()) {  // only password field is empty
+                Toast.makeText(this, "Enter a password!", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                signUpUser(etUsername, etPassword)
+            }
         }
     }
 
