@@ -125,8 +125,9 @@ class LoginActivity : AppCompatActivity() {
             else {
                 // todo: check if user doesn't have an account & tell them to click sign up to create one instead
                 // todo: else if another problem, show the below Toast message instead & print the stack trace
-                e.printStackTrace()  // login failed. look at ParseException to see what happened
+
                 Toast.makeText(this, "Register your account before logging in!", Toast.LENGTH_SHORT).show()
+                e.printStackTrace()  // login failed. look at ParseException to see what happened
             }
             })
         )
