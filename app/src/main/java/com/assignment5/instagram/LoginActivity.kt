@@ -90,6 +90,7 @@ class LoginActivity : AppCompatActivity() {
 
     // make network call to sign up a user with their username and password if they don't have an account
     private fun signUpUser(username: String, password: String){
+
         // create a new ParseUser object for the user
         val newUser: ParseUser = ParseUser()
 
