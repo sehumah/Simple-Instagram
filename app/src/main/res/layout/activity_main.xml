@@ -12,7 +12,7 @@
         android:id="@+id/divider_top"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="0dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -33,7 +33,7 @@
         android:id="@+id/tv_post_owner_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="username"
+        android:hint="username"
         android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"
         app:layout_constraintStart_toEndOf="@+id/iv_post_owner_profile_icon"
@@ -52,48 +52,13 @@
     <ImageView
         android:id="@+id/iv_image_post"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="350dp"
         android:layout_marginTop="10dp"
         android:background="#a9a9a9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_post_owner_profile_icon"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <ImageView
-        android:id="@+id/iv_save_to_collection_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/iv_image_post"
-        app:layout_constraintTop_toBottomOf="@+id/iv_image_post"
-        app:srcCompat="@drawable/ic_baseline_bookmark_border_24" />
-
-    <EditText
-        android:id="@+id/et_caption"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:ems="10"
-        android:hint="caption"
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_like_icon" />
-
-    <Button
-        android:id="@+id/button_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:text="submit"
-        app:layout_constraintBottom_toTopOf="@+id/divider_bottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_caption" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_post_owner_profile_icon" />
 
     <ImageView
         android:id="@+id/iv_like_icon"
@@ -125,71 +90,48 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_image_post"
         app:srcCompat="@drawable/ic_baseline_send_24" />
 
-    <View
-        android:id="@+id/divider_bottom"
+    <ImageView
+        android:id="@+id/iv_save_to_collection_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_image_post"
+        app:layout_constraintTop_toBottomOf="@+id/iv_image_post"
+        app:srcCompat="@drawable/ic_baseline_bookmark_border_24" />
+
+    <EditText
+        android:id="@+id/et_caption"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="680dp"
-        android:background="?android:attr/listDivider"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:ems="10"
+        android:hint="caption"
+        android:inputType="text"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/iv_home_icon"
+        app:layout_constraintTop_toBottomOf="@+id/iv_like_icon" />
+<!--
+    <Button
+        android:id="@+id/button_launch_camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/divider_bottom"
-        app:layout_constraintTop_toBottomOf="@+id/divider_bottom"
-        app:srcCompat="@drawable/ic_baseline_home_24" />
-
-    <ImageView
-        android:id="@+id/iv_search_icon"
+        android:text="Take Photo"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_caption" />
+-->
+    <Button
+        android:id="@+id/button_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iv_home_icon"
-        app:layout_constraintTop_toBottomOf="@+id/divider_bottom"
-        app:srcCompat="@drawable/ic_baseline_search_24" />
-
-    <ImageView
-        android:id="@+id/iv_camera_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iv_search_icon"
-        app:layout_constraintTop_toBottomOf="@+id/divider_bottom"
-        app:layout_constraintVertical_bias="0.516"
-        app:srcCompat="@drawable/ic_baseline_photo_camera_24" />
-
-    <ImageView
-        android:id="@+id/iv_shopping_cart_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iv_camera_icon"
-        app:layout_constraintTop_toBottomOf="@+id/divider_bottom"
-        app:srcCompat="@drawable/ic_baseline_shopping_basket_24" />
-
-    <ImageView
-        android:id="@+id/iv_account_profile_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/divider_bottom"
-        app:layout_constraintTop_toBottomOf="@+id/divider_bottom"
-        app:srcCompat="@drawable/ic_baseline_account_circle_24" />
+        android:layout_marginTop="10dp"
+        android:text="submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_caption" />
 
     <ProgressBar
         android:id="@+id/pb_submitting_post"
@@ -202,5 +144,74 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <View
+        android:id="@+id/divider_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="50dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_home_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/divider_bottom"
+            app:layout_constraintTop_toBottomOf="@+id/divider_bottom"
+            app:srcCompat="@drawable/ic_baseline_home_24" />
+
+        <ImageView
+            android:id="@+id/iv_search_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_home_icon"
+            app:layout_constraintTop_toBottomOf="@+id/divider_bottom"
+            app:srcCompat="@drawable/ic_baseline_search_24" />
+
+        <ImageView
+            android:id="@+id/iv_camera_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_search_icon"
+            app:layout_constraintTop_toBottomOf="@+id/divider_bottom"
+            app:layout_constraintVertical_bias="0.516"
+            app:srcCompat="@drawable/ic_baseline_photo_camera_24" />
+
+        <ImageView
+            android:id="@+id/iv_shopping_cart_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_camera_icon"
+            app:layout_constraintTop_toBottomOf="@+id/divider_bottom"
+            app:srcCompat="@drawable/ic_baseline_shopping_basket_24" />
+
+        <ImageView
+            android:id="@+id/iv_account_profile_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/divider_bottom"
+            app:layout_constraintTop_toBottomOf="@+id/divider_bottom"
+            app:srcCompat="@drawable/ic_baseline_account_circle_24" />
+
+
+   <!-- -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
