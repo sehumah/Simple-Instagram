@@ -34,6 +34,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // fill username textview with user's username when they login
+        findViewById<TextView>(R.id.tv_post_owner_username).text = ParseUser.getCurrentUser().username
+
         // send post to server
         findViewById<Button>(R.id.button_submit).setOnClickListener {
             // grab the caption that the user has inputted
@@ -59,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
 
         // launch camera to let user take a picture
-        findViewById<Button>(R.id.iv_camera_icon).setOnClickListener {
+        findViewById<Button>(R.id.button_launch_camera).setOnClickListener {
             onLaunchCamera()
         }
 
