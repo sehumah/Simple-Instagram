@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.parse.ParseObject
 import com.parse.ParseUser
@@ -109,7 +110,7 @@ class LoginActivity : AppCompatActivity() {
                 // todo: check if user's account already exists and is trying to sign up again. Tell them to click login instead if they have an account
                 // todo: else if another problem, use the below Toast message instead and print the stack trace
 
-                Toast.makeText(this, "Unable to sign you up. Try again later!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Your account exists. Please login!", Toast.LENGTH_SHORT).show()
                 e.printStackTrace()  // sign up didn't succeed. look at the parse exception to figure out what happened
             }
         }
