@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
-        app:layout_constraintStart_toStartOf="@+id/iv_post_image"
+        app:layout_constraintStart_toStartOf="@+id/iv_image_post"
         app:layout_constraintTop_toBottomOf="@+id/divider_top"
         app:srcCompat="@drawable/ic_baseline_account_circle_24" />
 
@@ -45,12 +45,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/iv_post_image"
+        app:layout_constraintEnd_toEndOf="@+id/iv_image_post"
         app:layout_constraintTop_toBottomOf="@+id/divider_top"
         app:srcCompat="@drawable/ic_baseline_more_vert_24" />
 
     <ImageView
-        android:id="@+id/iv_post_image"
+        android:id="@+id/iv_image_post"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginTop="10dp"
@@ -67,20 +67,32 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/iv_post_image"
-        app:layout_constraintTop_toBottomOf="@+id/iv_post_image"
+        app:layout_constraintEnd_toEndOf="@+id/iv_image_post"
+        app:layout_constraintTop_toBottomOf="@+id/iv_image_post"
         app:srcCompat="@drawable/ic_baseline_bookmark_border_24" />
+
+    <EditText
+        android:id="@+id/et_caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="caption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_like_icon" />
 
     <Button
         android:id="@+id/button_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-30dp"
+        android:layout_marginTop="0dp"
         android:text="submit"
         app:layout_constraintBottom_toTopOf="@+id/divider_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_like_icon" />
+        app:layout_constraintTop_toBottomOf="@+id/et_caption" />
 
     <ImageView
         android:id="@+id/iv_like_icon"
@@ -88,8 +100,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
-        app:layout_constraintStart_toStartOf="@+id/iv_post_image"
-        app:layout_constraintTop_toBottomOf="@+id/iv_post_image"
+        app:layout_constraintStart_toStartOf="@+id/iv_image_post"
+        app:layout_constraintTop_toBottomOf="@+id/iv_image_post"
         app:srcCompat="@drawable/ic_baseline_favorite_24" />
 
     <ImageView
@@ -99,7 +111,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         app:layout_constraintStart_toEndOf="@+id/iv_like_icon"
-        app:layout_constraintTop_toBottomOf="@+id/iv_post_image"
+        app:layout_constraintTop_toBottomOf="@+id/iv_image_post"
         app:srcCompat="@drawable/ic_baseline_comment_24" />
 
     <ImageView
@@ -109,7 +121,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         app:layout_constraintStart_toEndOf="@+id/iv_comment_icon"
-        app:layout_constraintTop_toBottomOf="@+id/iv_post_image"
+        app:layout_constraintTop_toBottomOf="@+id/iv_image_post"
         app:srcCompat="@drawable/ic_baseline_send_24" />
 
     <View
