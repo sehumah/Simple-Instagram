@@ -153,7 +153,7 @@ class MainActivity : AppCompatActivity() {
                 val pbSubmittingPost = findViewById<ProgressBar>(R.id.pb_submitting_post)
                 pbSubmittingPost.visibility = ProgressBar.VISIBLE
 
-                // launch new mainactivity intent & close the old one for now, until discovering an even better solution
+                // launch new main activity intent & close the old one for now, until a better solution is discovered
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -202,7 +202,7 @@ class MainActivity : AppCompatActivity() {
             ParseUser.logOut()
             val currentUser: ParseUser = ParseUser.getCurrentUser()  // this will now be null
 
-            // todo: navigating to login activity doesn't seem to be working so far, figure it out later
+            // todo: navigating to login activity after logging out doesn't seem to be working so far, figure it out later
             // then navigate to login/signup screen
             // val intent = Intent(this@MainActivity, LoginActivity::class.java)
             // startActivity(intent)
@@ -213,3 +213,12 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 }
+
+/**
+ * Suggestions for improvement:
+ *  1. currently, the main activity screen is relaunched upon submitting a post but what should
+ *      actually happen is setting the imagefield and the caption field to empty instead.
+ *
+ *  2. the app crushes after logging the second user out, reach out to TAs and seek help to prevent
+ *      this from happening later on
+ */
