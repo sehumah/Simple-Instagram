@@ -6,7 +6,9 @@
         <entry key="app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.3575" />
         <entry key="app/src/main/res/drawable/ic_baseline_bookmark_border_24.xml" value="0.3575" />
         <entry key="app/src/main/res/drawable/ic_baseline_comment_24.xml" value="0.3575" />
+        <entry key="app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.3575" />
         <entry key="app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.3575" />
+        <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.3575" />
         <entry key="app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.3575" />
         <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.3575" />
         <entry key="app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.3575" />
