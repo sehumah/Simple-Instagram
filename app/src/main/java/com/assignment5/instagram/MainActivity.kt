@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "MainActivity"
-        private val CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034
+        private const val CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034
         private const val photoFileName = "photo.jpg"
         private var photoFile: File? = null
     }
