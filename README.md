@@ -24,20 +24,22 @@ The following **additional** features are implemented:
 - [x] List anything else that you can get done to improve the app functionality!
     - If user already has an account and clicks **sign up** button, they're notified to click login button instead
     - If user does not have an account and clicks on **log in** button, they notified to click sign up button instead
-    - Add logout button in the app bar menu to enable current logged in user to log out and navigate to signup/login screen
+    - Add logout button in the app bar menu to enable current logged in user to log out of the app
     - Added a color tint to the background to indicate to the user that a photo goes there
+    - Check to ensure that user is entering both password and username before signing up or logging in. If either field is empty, they are notified to fill the empty field(s)
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='walkthrough.gif' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
+<img src='walkthrough.gif' title='Video Walkthrough' width='200' alt='Video Walkthrough' />
 
 GIF created with [Peek](https://github.com/phw/peek).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+1. I couldn't constrain the bottom navigation elements to the bottom of the screen in another emulator. The elements went off the screen and I couldn't scroll up to view them.
 
 ## Open-source libraries used
 
