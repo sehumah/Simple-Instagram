@@ -119,14 +119,14 @@ class LoginActivity : AppCompatActivity() {
         ParseUser.logInInBackground(username, password, ({ user, e ->
             if (user != null) {  // user has successfully logged in
                 Log.i(TAG, "$username successfully logged in!")
-                Toast.makeText(this, "Successfully logged in!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "$username successfully logged in!", Toast.LENGTH_SHORT).show()
                 navigateToMainActivity()
             }
             else {
                 // todo: check if user doesn't have an account & tell them to click sign up to create one instead
                 // todo: else if another problem, show the below Toast message instead & print the stack trace
                 e.printStackTrace()  // login failed. look at ParseException to see what happened
-                Toast.makeText(this, "Unable to log you in. Try again later!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Register your account before logging in!", Toast.LENGTH_SHORT).show()
             }
             })
         )
