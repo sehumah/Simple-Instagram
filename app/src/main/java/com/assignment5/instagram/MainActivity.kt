@@ -196,7 +196,7 @@ class MainActivity : AppCompatActivity() {
 
     // handle clicks on an app bar menu item
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.logout) {
+        if (item.itemId == R.id.action_logout) {
 
             // log the current user out if they click the logout button
             ParseUser.logOut()
