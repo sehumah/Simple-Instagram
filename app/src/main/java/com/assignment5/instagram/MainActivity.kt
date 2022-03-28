@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
 
         // launch camera to let user take a picture
-        findViewById<ImageView>(R.id.button_launch_camera).setOnClickListener {
+        findViewById<Button>(R.id.button_launch_camera).setOnClickListener {
             onLaunchCamera()
         }
 
