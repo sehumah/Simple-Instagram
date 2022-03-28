@@ -2,7 +2,6 @@ package com.assignment5.instagram
 
 import android.content.Intent
 import android.graphics.BitmapFactory
-import android.media.Image
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -154,8 +153,7 @@ class MainActivity : AppCompatActivity() {
         // Get safe storage directory for photos
         // Use `getExternalFilesDir` on Context to access package-specific directories.
         // This way, we don't need to request external read/write runtime permissions.
-        val mediaStorageDir =
-            File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG)
+        val mediaStorageDir = File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG)
 
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()) {
@@ -244,6 +242,10 @@ class MainActivity : AppCompatActivity() {
 
             // just implement a toast for now
             // Toast.makeText(this, "Logout button clicked!", Toast.LENGTH_SHORT).show()
+        }
+        else if (item.itemId == R.id.action_compose) {  // listen for clicks on the compose button in the top menu
+            Toast.makeText(this, "Compose", Toast.LENGTH_SHORT).show()
+            // TODO("navigate to compose screen fragment")
         }
         return super.onOptionsItemSelected(item)
     }
