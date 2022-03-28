@@ -13,6 +13,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import androidx.core.content.FileProvider
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.parse.*
 import java.io.File
 
@@ -67,6 +68,40 @@ class MainActivity : AppCompatActivity() {
         }
 
         // queryForPosts()
+
+
+        // set click listeners to the bottom navigation items
+        findViewById<BottomNavigationView>(R.id.bottom_navigation_view).setOnItemSelectedListener {
+            item ->
+            when (item.itemId) {
+                R.id.action_home -> {
+                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
+                    // TODO("navigate to the home/timeline screen")
+                }
+                R.id.action_search -> {
+                    Toast.makeText(this, "Search/Explore", Toast.LENGTH_SHORT).show()
+                    // TODO("navigate to the search/explore screen")
+                }
+                R.id.action_reels -> {
+                    Toast.makeText(this, "Reels", Toast.LENGTH_SHORT).show()
+                    // TODO("navigate to the reels screen")
+                }
+                R.id.action_shopping_cart -> {
+                    Toast.makeText(this, "Shopping Cart", Toast.LENGTH_SHORT).show()
+                    // TODO("navigate to the shopping cart screen")
+                }
+                R.id.action_profile -> {
+                    Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
+                    // TODO("navigate to the profile screen")
+                }
+                else -> {
+                    Toast.makeText(this, "Timeline", Toast.LENGTH_SHORT).show()
+                    // TODO("navigate to the timeline screen")
+                }
+            }
+            // return true to say that we've handled this user interaction on the item
+            true
+        }
     }
 
 
