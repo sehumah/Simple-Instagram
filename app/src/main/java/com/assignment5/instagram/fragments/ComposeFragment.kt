@@ -28,12 +28,10 @@ class ComposeFragment : Fragment() {
     private val photoFileName = "photo.jpg"
     private var photoFile: File? = null
     private val CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034
+    lateinit var ivImagePost: ImageView
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_compose, container, false)
     }
@@ -43,31 +41,34 @@ class ComposeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // get reference to the image to post view
+        ivImagePost = view.findViewById(R.id.iv_image_post)
+
         // set click listener to submit button to send post to server
         view.findViewById<Button>(R.id.button_submit).setOnClickListener {  // since fragments can't automatically findViewById, prepend it with the view variable
             // grab the caption that the user has inputted
             val caption = view.findViewById<EditText>(R.id.et_caption).text.toString()
             val user = ParseUser.getCurrentUser()
-            if (MainActivity.photoFile == null && caption == "") {  // check if both fields are null
-                Toast.makeText(this, "Post is empty!", Toast.LENGTH_SHORT).show()
+            if (photoFile == null && caption == "") {  // check if both fields are null
+                Toast.makeText(requireContext(), "Post is empty!", Toast.LENGTH_SHORT).show()
             }
-            else if (MainActivity.photoFile == null && caption != "") {  // check if photo field is null
-                Toast.makeText(this, "No image found. Please add a photo!", Toast.LENGTH_SHORT).show()
+            else if (photoFile == null && caption != "") {  // check if photo field is null
+                Toast.makeText(requireContext(), "No image found. Please add a photo!", Toast.LENGTH_SHORT).show()
             }
-            else if (MainActivity.photoFile != null && caption == "") { // check if caption field is null
-                Toast.makeText(this, "No caption found. Please add a caption!", Toast.LENGTH_SHORT).show()
+            else if (photoFile != null && caption == "") { // check if caption field is null
+                Toast.makeText(requireContext(), "No caption found. Please add a caption!", Toast.LENGTH_SHORT).show()
             }
-            else if (MainActivity.photoFile != null && caption != "") {  // both fields are filled, submit the post
-                submitPost(caption, user, MainActivity.photoFile!!)
+            else if (photoFile != null && caption != "") {  // both fields are filled, submit the post
+                submitPost(caption, user, photoFile!!)
             }
             else {  // some other error
-                Toast.makeText(this, "Error sending post. Please try again later!", Toast.LENGTH_SHORT).show()
-                Log.e(MainActivity.TAG, "Error. Could not send post at this moment!")
+                Toast.makeText(requireContext(), "Error sending post. Please try again later!", Toast.LENGTH_SHORT).show()
+                Log.e(TAG, "Error. Could not send post at this moment!")
             }
         }
 
 
-        // launch camera to let user take a picture
+        // launch camera to let user take a photo
         view.findViewById<Button>(R.id.button_launch_camera).setOnClickListener {
             onLaunchCamera()
         }
@@ -83,22 +84,24 @@ class ComposeFragment : Fragment() {
         post.setUser(user)
         post.saveInBackground { exception ->
             if (exception != null) {  // something's gone wrong
-                Toast.makeText(this, "Something went wrong. Couldn't save post!", Toast.LENGTH_SHORT).show()
-                Log.e(MainActivity.TAG, "Error while saving post!")
+                Toast.makeText(requireContext(), "Something went wrong. Couldn't save post!", Toast.LENGTH_SHORT).show()
+                Log.e(TAG, "Error while saving post!")
                 exception.printStackTrace()
             }
             else {
-                Toast.makeText(this, "Successfully saved post!", Toast.LENGTH_SHORT).show()
-                Log.i(MainActivity.TAG, "Successfully saved post!")
+                Toast.makeText(requireContext(), "Successfully saved post!", Toast.LENGTH_SHORT).show()
+                Log.i(TAG, "Successfully saved post!")
 
                 // display the progress bar while post is being submitted
                 val pbSubmittingPost = view?.findViewById<ProgressBar>(R.id.pb_submitting_post)
                 pbSubmittingPost?.visibility = ProgressBar.VISIBLE
 
                 // launch new main activity intent & close the old one for now, until a better solution is discovered
+                /*
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
+                */
                 // todo: reset caption field to be empty again
                 // todo: reset the image view to be empty
             }
@@ -110,13 +113,13 @@ class ComposeFragment : Fragment() {
         // create Intent to take a picture and return control to the calling application
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         // Create a File reference for future access
-        MainActivity.photoFile = getPhotoFileUri(MainActivity.photoFileName)
+        photoFile = getPhotoFileUri(photoFileName)
 
         // wrap File object into a content provider
         // required for API >= 24
         // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
-        if (MainActivity.photoFile != null) {
-            val fileProvider: Uri = FileProvider.getUriForFile(this, "com.codepath.fileprovider", MainActivity.photoFile!!)
+        if (photoFile != null) {
+            val fileProvider: Uri = FileProvider.getUriForFile(requireContext(), "com.codepath.fileprovider", photoFile!!)
             intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider)
 
             // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
@@ -124,9 +127,9 @@ class ComposeFragment : Fragment() {
 
             // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
             // So as long as the result is not null, it's safe to use the intent.
-            if (intent.resolveActivity(packageManager) != null) {
+            if (intent.resolveActivity(requireContext().packageManager) != null) {
                 // Start the image capture intent to take photo
-                startActivityForResult(intent, MainActivity.CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE)
+                startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE)
             }
         }
     }
@@ -137,11 +140,11 @@ class ComposeFragment : Fragment() {
         // Get safe storage directory for photos
         // Use `getExternalFilesDir` on Context to access package-specific directories.
         // This way, we don't need to request external read/write runtime permissions.
-        val mediaStorageDir = File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), MainActivity.TAG)
+        val mediaStorageDir = File(requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG)
 
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()) {
-            Log.d(MainActivity.TAG, "failed to create directory")
+            Log.d(TAG, "failed to create directory")
         }
 
         // Return the file target for the photo based on filename
@@ -151,20 +154,18 @@ class ComposeFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == MainActivity.CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == AppCompatActivity.RESULT_OK) {
                 // by this point we have the camera photo on disk
-                val takenImage = BitmapFactory.decodeFile(MainActivity.photoFile!!.absolutePath)
+                val takenImage = BitmapFactory.decodeFile(photoFile!!.absolutePath)
                 // RESIZE BITMAP, see section below
                 // Load the taken image into a preview
-                val ivPreview: ImageView = findViewById(R.id.iv_image_post)
-                ivPreview.setImageBitmap(takenImage)
+                ivImagePost.setImageBitmap(takenImage)
             }
             else { // Result was a failure
-                Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Picture wasn't taken!", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
 
 }
