@@ -28,7 +28,7 @@ class PostAdapter (private val context: Context, private val posts: List<Post>) 
             tvPostOwnerUsername = itemView.findViewById(R.id.tv_post_owner_username)
             ivImagePost = itemView.findViewById(R.id.iv_image_post)
             tvLikesCounter = itemView.findViewById(R.id.tv_likes_counter)
-            tvCaption = itemView.findViewById(R.id.et_caption)
+            tvCaption = itemView.findViewById(R.id.tv_caption)
         }
 
         // implement bind method which will associate the data with the correct views in the layout
