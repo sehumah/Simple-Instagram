@@ -1,5 +1,6 @@
 package com.assignment5.instagram
 
+import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
@@ -9,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 
-class PostAdapter : RecyclerView.Adapter<PostAdapter.ViewHolder>() {
+class PostAdapter (private val context: Context, private val posts: List<Post>) : RecyclerView.Adapter<PostAdapter.ViewHolder>() {
 
     // class responsible for laying out the individual items in the layout file
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
