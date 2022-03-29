@@ -14,7 +14,7 @@ import android.widget.*
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.assignment5.instagram.fragments.ComposeFragment
+import com.assignment5.instagram.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.parse.*
 import java.io.File
@@ -42,22 +42,22 @@ class MainActivity : AppCompatActivity() {
             lateinit var currentFragment: Fragment  // temporary fragment to use for swapping actual fragments
             when (item.itemId) {
                 R.id.action_home -> {
-                    currentFragment = ComposeFragment() // TODO("navigate to the home/timeline screen later when it's been implemented")
+                    currentFragment = HomeFragment()
                 }
                 R.id.action_search -> {
-                    currentFragment = ComposeFragment() // TODO("navigate to the search/explore screen later when it's been implemented")
+                    currentFragment = SearchFragment()
                 }
                 R.id.action_reels -> {
-                    currentFragment = ComposeFragment() // TODO("navigate to the reels screen later when it's been implemented")
+                    currentFragment = ReelsFragment()
                 }
                 R.id.action_shopping_cart -> {
-                    currentFragment = ComposeFragment() // TODO("navigate to the shopping cart screen later when it's been implemented")
+                    currentFragment = ShoppingCartFragment()
                 }
                 R.id.action_profile -> {
-                    currentFragment = ComposeFragment() // TODO("navigate to the profile screen later when it's been implemented")
+                    currentFragment = ProfileFragment()
                 }
                 else -> {
-                    currentFragment = ComposeFragment() // TODO("navigate to the timeline screen later when it's been implemented")
+                    currentFragment = HomeFragment()
                 }
             }
             fragmentManager.beginTransaction().replace(R.id.fl_fragment_container, currentFragment).commit()
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // set default selection
-        findViewById<BottomNavigationView>(R.id.bottom_navigation_view).selectedItemId = R.id.fl_fragment_container  // todo: change destination later to home when home fragment is implemented
+        findViewById<BottomNavigationView>(R.id.bottom_navigation_view).selectedItemId = R.id.action_home
 
          // queryForPosts()
     }
