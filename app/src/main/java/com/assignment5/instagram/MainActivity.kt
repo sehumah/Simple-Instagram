@@ -30,9 +30,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // fill username textview with user's username when they login
-        findViewById<TextView>(R.id.tv_post_owner_username).text = ParseUser.getCurrentUser().username
-
 
         // set click listeners to the bottom navigation bar items
         findViewById<BottomNavigationView>(R.id.bottom_navigation_view).setOnItemSelectedListener {
@@ -125,8 +122,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-
-
 
 }
 
