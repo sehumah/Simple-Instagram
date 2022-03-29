@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.assignment5.instagram.Post
+import com.assignment5.instagram.PostAdapter
 import com.assignment5.instagram.R
 import com.parse.FindCallback
 import com.parse.ParseException
@@ -19,6 +21,8 @@ private const val TAG = "HomeFragment"
 class HomeFragment : Fragment() {
 
     private lateinit var rvPostsFeed: RecyclerView
+    private lateinit var adapter: PostAdapter
+    private var allPosts: MutableList<Post> = mutableListOf()  // mutable so that I can grab posts from the server and add them to this list
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -32,13 +36,22 @@ class HomeFragment : Fragment() {
         // this is where we setup views, similar to oncreate() for activities
         rvPostsFeed = view.findViewById(R.id.rv_posts_feed)
 
+        // initialize adapter
+        adapter = PostAdapter(requireContext(), allPosts)
+
+        // set the adapter for the recycler view
+        rvPostsFeed.adapter = adapter
+
+        // set the layout manager
+        rvPostsFeed.layoutManager = LinearLayoutManager(requireContext())
+
         /**
          * Step-by-Step Guide to Populate Any RecyclerView
          * -----------------------------------------------
          * Start populating the recycler view
          *  1. Create a layout for each row in the list of posts retrieved from the server [done]
          *  2. Create a data source for each row (this is the Post class) [done]
-         *  3. Create adapter that will bridge data and row layout [done]
+         *  3. Create adapter that will bridge data and row layout (PostAdapter.kt) [done]
          *  4. Set adapter on RecyclerView
          *  5. Set layout manager on RecyclerView
          */
