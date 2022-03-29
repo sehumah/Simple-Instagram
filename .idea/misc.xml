@@ -26,6 +26,7 @@
         <entry key="app/src/main/res/layout/fragment_reels.xml" value="0.30932971014492755" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.30932971014492755" />
         <entry key="app/src/main/res/layout/fragment_shopping_cart.xml" value="0.30932971014492755" />
+        <entry key="app/src/main/res/layout/item_post.xml" value="0.25" />
         <entry key="app/src/main/res/menu/menu_bottom_navigation.xml" value="0.35625" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.1" />
         <entry key="app/src/main/res/xml/fileprovider.xml" value="0.35625" />
