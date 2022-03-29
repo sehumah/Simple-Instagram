@@ -42,11 +42,12 @@ class HomeFragment : Fragment() {
          *  4. Set adapter on RecyclerView
          *  5. Set layout manager on RecyclerView
          */
+        queryForPosts()
     }
 
 
 
-    // make a query for all posts from the server, todo: replace with something sophisticated
+    // make a query for all posts from the server (only the last 20 for this assignment)
     private fun queryForPosts() {
         // specify the class to query
         val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
