@@ -49,7 +49,9 @@ class PostAdapter (private val context: Context, private val posts: List<Post>) 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-         TODO("Not yet implemented")
+        // get the specific post we're trying to inflate and pass it to bind
+        val post = posts.get(position)
+        holder.bind(post)
     }
 
     override fun getItemCount(): Int {
