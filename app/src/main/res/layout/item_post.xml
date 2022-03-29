@@ -10,17 +10,6 @@
     recycler view looks like
     -->
 
-    <View
-        android:id="@+id/divider_top"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="0dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/iv_post_owner_profile_icon"
         android:layout_width="wrap_content"
@@ -28,7 +17,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         app:layout_constraintStart_toStartOf="@+id/iv_image_post"
-        app:layout_constraintTop_toBottomOf="@+id/divider_top"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_account_circle_24" />
 
     <TextView
@@ -39,7 +28,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"
         app:layout_constraintStart_toEndOf="@+id/iv_post_owner_profile_icon"
-        app:layout_constraintTop_toBottomOf="@+id/divider_top" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_more_info_on_post"
@@ -48,7 +37,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="@+id/iv_image_post"
-        app:layout_constraintTop_toBottomOf="@+id/divider_top"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_more_vert_24" />
 
     <ImageView
@@ -61,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_post_owner_profile_icon" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_more_info_on_post" />
 
     <ImageView
         android:id="@+id/iv_like_icon"
@@ -108,7 +97,7 @@
         android:id="@+id/tv_likes_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="123 likes"
+        android:text="0 likes"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
