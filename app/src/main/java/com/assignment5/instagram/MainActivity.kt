@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         // define fragment manager
         val fragmentManager: FragmentManager = supportFragmentManager
 
-
         // set click listeners to the bottom navigation bar items
         findViewById<BottomNavigationView>(R.id.bottom_navigation_view).setOnItemSelectedListener { item ->
             lateinit var currentFragment: Fragment  // temporary fragment to use for swapping actual fragments
@@ -68,7 +67,6 @@ class MainActivity : AppCompatActivity() {
         // set default selection
         findViewById<BottomNavigationView>(R.id.bottom_navigation_view).selectedItemId = R.id.action_home
 
-         // queryForPosts()
     }
 
 
@@ -107,29 +105,6 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-
-    // make a query for all posts from the server, todo: replace with something sophisticated
-    private fun queryForPosts() {
-        // specify the class to query
-        val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
-
-        // find all post objects in the server
-        query.include(Post.KEY_USER)  // return the user object associated with each post
-        query.findInBackground(object : FindCallback<Post> {
-            override fun done(postObjects: MutableList<Post>?, e: ParseException?) {
-                if (e == null) {
-                    if (postObjects != null) {
-                        for (post in postObjects) {
-                            Log.i(TAG, "Post: ${post.getCaption()}, username: ${post.getUser()?.username}")
-                        }
-                    }
-                }
-                else {
-                    Log.e(TAG, "Error fetching posts!")
-                }
-            }
-        })
-    }
 
 }
 
