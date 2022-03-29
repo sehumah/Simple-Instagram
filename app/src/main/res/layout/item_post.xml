@@ -103,18 +103,31 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_image_post"
         app:srcCompat="@drawable/ic_baseline_bookmark_border_24" />
 
+
+    <TextView
+        android:id="@+id/tv_likes_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="123 likes"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_like_icon" />
+
     <EditText
         android:id="@+id/et_caption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:ems="10"
         android:hint="caption"
         android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_like_icon" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_likes_counter" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
