@@ -36,8 +36,8 @@ class HomeFragment : Fragment() {
          * Step-by-Step Guide to Populate Any RecyclerView
          * -----------------------------------------------
          * Start populating the recycler view
-         *  1. Create a layout for each row in the list of posts retrieved from the server
-         *  2. Create a data source for each row (this is the Post class)
+         *  1. Create a layout for each row in the list of posts retrieved from the server [done]
+         *  2. Create a data source for each row (this is the Post class) [done]
          *  3. Create adapter that will bridge data and row layout
          *  4. Set adapter on RecyclerView
          *  5. Set layout manager on RecyclerView
