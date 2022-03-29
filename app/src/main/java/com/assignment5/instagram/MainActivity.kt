@@ -12,6 +12,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import androidx.core.content.FileProvider
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import com.assignment5.instagram.fragments.ComposeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.parse.*
 import java.io.File
@@ -30,43 +33,43 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // define fragment manager
+        val fragmentManager: FragmentManager = supportFragmentManager
+
 
         // set click listeners to the bottom navigation bar items
-        findViewById<BottomNavigationView>(R.id.bottom_navigation_view).setOnItemSelectedListener {
-            item ->
+        findViewById<BottomNavigationView>(R.id.bottom_navigation_view).setOnItemSelectedListener { item ->
+            lateinit var currentFragment: Fragment  // temporary fragment to use for swapping actual fragments
             when (item.itemId) {
                 R.id.action_home -> {
-                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
-                    // TODO("navigate to the home/timeline screen")
+                    currentFragment = ComposeFragment() // TODO("navigate to the home/timeline screen later when it's been implemented")
                 }
                 R.id.action_search -> {
-                    Toast.makeText(this, "Search/Explore", Toast.LENGTH_SHORT).show()
-                    // TODO("navigate to the search/explore screen")
+                    currentFragment = ComposeFragment() // TODO("navigate to the search/explore screen later when it's been implemented")
                 }
                 R.id.action_reels -> {
-                    Toast.makeText(this, "Reels", Toast.LENGTH_SHORT).show()
-                    // TODO("navigate to the reels screen")
+                    currentFragment = ComposeFragment() // TODO("navigate to the reels screen later when it's been implemented")
                 }
                 R.id.action_shopping_cart -> {
-                    Toast.makeText(this, "Shopping Cart", Toast.LENGTH_SHORT).show()
-                    // TODO("navigate to the shopping cart screen")
+                    currentFragment = ComposeFragment() // TODO("navigate to the shopping cart screen later when it's been implemented")
                 }
                 R.id.action_profile -> {
-                    Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
-                    // TODO("navigate to the profile screen")
+                    currentFragment = ComposeFragment() // TODO("navigate to the profile screen later when it's been implemented")
                 }
                 else -> {
-                    Toast.makeText(this, "Timeline", Toast.LENGTH_SHORT).show()
-                    // TODO("navigate to the timeline screen")
+                    currentFragment = ComposeFragment() // TODO("navigate to the timeline screen later when it's been implemented")
                 }
             }
+            fragmentManager.beginTransaction().replace(R.id.fl_fragment_container, currentFragment).commit()
             // return true to say that we've handled this user interaction on the item
             true
         }
 
+        // set default selection
+        findViewById<BottomNavigationView>(R.id.bottom_navigation_view).selectedItemId = R.id.fl_fragment_container  // todo: change destination later to home when home fragment is implemented
+
          // queryForPosts()
     }
-
 
 
     // inflate the resource file to be used and return true to show the menu
@@ -84,17 +87,22 @@ class MainActivity : AppCompatActivity() {
             ParseUser.logOut()
             val currentUser: ParseUser = ParseUser.getCurrentUser()  // this will now be null
 
+            /*
             // todo: navigating to login activity after logging out doesn't seem to be working so far, figure it out later
-            // then navigate to login/signup screen
-            // val intent = Intent(this@MainActivity, LoginActivity::class.java)
-            // startActivity(intent)
+             then navigate to login/signup screen
+             val intent = Intent(this@MainActivity, LoginActivity::class.java)
+             startActivity(intent)
 
-            // just implement a toast for now
-            // Toast.makeText(this, "Logout button clicked!", Toast.LENGTH_SHORT).show()
+             // just implement a toast for now
+             Toast.makeText(this, "Logout button clicked!", Toast.LENGTH_SHORT).show()
+            */
         }
         else if (item.itemId == R.id.action_compose) {  // listen for clicks on the compose button in the top menu
-            Toast.makeText(this, "Compose", Toast.LENGTH_SHORT).show()
-            // TODO("navigate to compose screen fragment")
+            // show the compose fragment
+            val fragment = ComposeFragment()
+            val fragmentTransaction = supportFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fl_fragment_container, fragment)
+            fragmentTransaction.commit()
         }
         return super.onOptionsItemSelected(item)
     }
