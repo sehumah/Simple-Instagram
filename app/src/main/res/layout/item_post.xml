@@ -98,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="@+id/iv_image_post"
         app:layout_constraintTop_toBottomOf="@+id/iv_image_post"
         app:srcCompat="@drawable/ic_baseline_bookmark_border_24" />
@@ -114,8 +114,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_like_icon" />
 
-    <EditText
-        android:id="@+id/et_caption"
+    <TextView
+        android:id="@+id/tv_caption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -123,7 +123,6 @@
         android:layout_marginEnd="20dp"
         android:ems="10"
         android:hint="caption"
-        android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
