@@ -32,6 +32,10 @@ class ComposeFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        // fill post owner's username textview with their username
+        container?.findViewById<TextView>(R.id.tv_post_owner_username)?.text = ParseUser.getCurrentUser().username
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_compose, container, false)
     }
