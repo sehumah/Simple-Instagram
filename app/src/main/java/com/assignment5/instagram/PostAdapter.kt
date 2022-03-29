@@ -1,6 +1,7 @@
 package com.assignment5.instagram
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
@@ -45,7 +46,9 @@ class PostAdapter (private val context: Context, private val posts: List<Post>) 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-         TODO("Not yet implemented")
+         // specify the layout file to use for this item
+        val view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
