@@ -35,7 +35,7 @@ class PostAdapter (private val context: Context, private val posts: List<Post>) 
         fun bind(post: Post) {  // take in a post and set the appropriate views
             // populate text views
             tvPostOwnerUsername.text = post.getUser()?.username
-            tvLikesCounter.text = "xxx likes"
+            tvLikesCounter.text = ""
             tvCaption.text = post.getCaption()
 
             // populate image views
