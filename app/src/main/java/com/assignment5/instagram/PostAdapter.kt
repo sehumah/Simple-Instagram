@@ -53,7 +53,7 @@ class PostAdapter (private val context: Context, private val posts: List<Post>) 
     }
 
     override fun getItemCount(): Int {
-         TODO("Not yet implemented")
+         return posts.size
     }
 }
 
