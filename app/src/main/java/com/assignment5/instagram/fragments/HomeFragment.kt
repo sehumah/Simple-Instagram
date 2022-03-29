@@ -74,6 +74,11 @@ class HomeFragment : Fragment() {
                         for (post in postObjects) {
                             Log.i(TAG, "Post: ${post.getCaption()}, username: ${post.getUser()?.username}")
                         }
+                        // add all retrieved posts to the list of posts
+                        allPosts.addAll(postObjects)
+
+                        // notify the adapter of a dataset change
+                        adapter.notifyDataSetChanged()
                     }
                 }
                 else {
