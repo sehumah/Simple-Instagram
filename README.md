@@ -1,4 +1,4 @@
-# Project 3 - *Simple-Instagram*
+# Project 3 - *Simple-Instagram 2*
 
 **Simple-Instagram** is a photo sharing app similar to Instagram but using Parse as its backend.
 
