@@ -18,11 +18,13 @@ private const val TAG = "ProfileFragment"
 
 class ProfileFragment : HomeFragment() {
 
+    /*
+    // todo: comment onCreateView() out for now until a specific profile layout and an adapter have been implemented for the profile screen
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
-
+    */
     override fun queryForPosts() {  // open, so it can be overridden in ProfileFragment
         // specify the class to query
         val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
