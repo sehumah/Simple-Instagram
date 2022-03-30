@@ -61,7 +61,7 @@ open class HomeFragment : Fragment() {
 
 
     // make a query for all posts from the server (only the last 20 for this assignment)
-    private fun queryForPosts() {
+    open fun queryForPosts() {  // open, so it can be overridden in ProfileFragment
         // specify the class to query
         val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
 
