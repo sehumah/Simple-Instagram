@@ -67,7 +67,11 @@ class HomeFragment : Fragment() {
 
         // find all post objects in the server
         query.include(Post.KEY_USER)  // return the user object associated with each post
-        query.addDescendingOrder("createdAt")  // arrange the posts in descending order
+
+        // arrange the posts in descending order i.e newer posts will appear first/on the top
+        query.addDescendingOrder("createdAt")
+
+        // todo: make modifications below to only return the most recent 20 posts
         query.findInBackground(object : FindCallback<Post> {
             override fun done(postObjects: MutableList<Post>?, e: ParseException?) {
                 if (e == null) {
