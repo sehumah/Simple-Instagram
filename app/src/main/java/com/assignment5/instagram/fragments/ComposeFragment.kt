@@ -101,11 +101,10 @@ class ComposeFragment : Fragment() {
                 pbSubmittingPost?.visibility = ProgressBar.VISIBLE
 
                 // launch new main activity intent & close the old one for now, until a better solution is discovered
-                /*
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(requireContext(), MainActivity::class.java)
                 startActivity(intent)
-                finish()
-                */
+                activity?.finish()
+
                 // todo: reset caption field to be empty again
                 // todo: reset the image view to be empty
             }
