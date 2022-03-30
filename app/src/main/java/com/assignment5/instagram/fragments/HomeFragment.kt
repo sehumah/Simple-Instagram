@@ -21,8 +21,8 @@ private const val TAG = "HomeFragment"
 open class HomeFragment : Fragment() {
 
     private lateinit var rvPostsFeed: RecyclerView
-    private lateinit var adapter: PostAdapter
-    private var allPosts: MutableList<Post> = mutableListOf()  // mutable so that I can grab posts from the server and add them to this list
+    lateinit var adapter: PostAdapter
+    var allPosts: MutableList<Post> = mutableListOf()  // mutable so that I can grab posts from the server and add them to this list
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
