@@ -35,14 +35,13 @@ class PostAdapter (private val context: Context, private val posts: List<Post>) 
         fun bind(post: Post) {  // take in a post and set the appropriate views
             // populate text views
             tvPostOwnerUsername.text = post.getUser()?.username
-            tvLikesCounter.text = ""
+            // tvLikesCounter.text = ""  // comment for now. todo: add like counter to database and insert here later
             tvCaption.text = post.getCaption()
 
             // populate image views
             Glide.with(itemView.context).load(post.getImage()?.url).into(ivImagePost)
-            Glide.with(itemView.context).load("").into(ivPostOwnerProfileIcon)
+            Glide.with(itemView.context).load(R.mipmap.ic_launcher_round).into(ivPostOwnerProfileIcon)  // set default profile icon for now. todo: change this later
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
