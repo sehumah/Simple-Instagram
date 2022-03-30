@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <!--
     layout class responsible for laying out how each post in the
@@ -12,8 +12,9 @@
 
     <ImageView
         android:id="@+id/iv_post_owner_profile_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="centerInside"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         app:layout_constraintStart_toStartOf="@+id/iv_image_post"
@@ -25,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="username"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginStart="5dp"
         app:layout_constraintStart_toEndOf="@+id/iv_post_owner_profile_icon"
         app:layout_constraintTop_toTopOf="parent" />
@@ -92,7 +93,6 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_image_post"
         app:srcCompat="@drawable/ic_baseline_bookmark_border_24" />
 
-
     <TextView
         android:id="@+id/tv_likes_counter"
         android:layout_width="wrap_content"
@@ -107,15 +107,16 @@
         android:id="@+id/tv_caption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:ems="10"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:hint="caption"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_likes_counter" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_likes_counter"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
