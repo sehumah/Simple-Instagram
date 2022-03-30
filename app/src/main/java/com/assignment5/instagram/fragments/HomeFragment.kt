@@ -18,7 +18,7 @@ import com.parse.ParseQuery
 
 private const val TAG = "HomeFragment"
 
-class HomeFragment : Fragment() {
+open class HomeFragment : Fragment() {
 
     private lateinit var rvPostsFeed: RecyclerView
     private lateinit var adapter: PostAdapter
