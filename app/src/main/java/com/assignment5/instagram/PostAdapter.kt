@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
@@ -36,7 +37,7 @@ class PostAdapter (private val context: Context, private val posts: List<Post>) 
             // populate text views
             tvPostOwnerUsername.text = post.getUser()?.username
             // tvLikesCounter.text = ""  // comment for now. todo: add like counter to database and insert here later
-            tvCaption.text = post.getCaption()
+            tvCaption.text = "${post.getUser()?.username} ${post.getCaption()}"
 
             // populate image views
             Glide.with(itemView.context).load(post.getImage()?.url).into(ivImagePost)
