@@ -1,6 +1,7 @@
 package com.assignment5.instagram
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -47,8 +48,16 @@ class LoginActivity : AppCompatActivity() {
             navigateToMainActivity()
         }
 
+        // create buttons & set their background colors
+        val loginButton: Button = findViewById<Button>(R.id.button_login)
+        val signupButton: Button = findViewById<Button>(R.id.button_signup)
+
+        loginButton.setBackgroundColor(resources.getColor(R.color.instagram_blue))
+        signupButton.setBackgroundColor(Color.GREEN)
+
+
         // set click listener to login button & grab the username and password for logging in
-        findViewById<Button>(R.id.button_login).setOnClickListener {
+        loginButton.setOnClickListener {
             val etUsername = findViewById<EditText>(R.id.et_username).text.toString()
             val etPassword = findViewById<EditText>(R.id.et_password).text.toString()
 
@@ -68,7 +77,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // set click listener to signup button & grab the username and password for signing up
-        findViewById<Button>(R.id.button_signup).setOnClickListener {
+        signupButton.setOnClickListener {
             val etUsername = findViewById<EditText>(R.id.et_username).text.toString()
             val etPassword = findViewById<EditText>(R.id.et_password).text.toString()
 
