@@ -4,10 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
@@ -22,6 +20,7 @@ class PostAdapter (private val context: Context, private val posts: List<Post>) 
         private val tvPostOwnerUsername: TextView
         private val tvLikesCounter: TextView
         private val tvCaption: TextView
+        private val tvPostCreationTime: TextView
 
         // upon initializing this class, find the variables using their IDs
         init {
@@ -30,6 +29,7 @@ class PostAdapter (private val context: Context, private val posts: List<Post>) 
             ivImagePost = itemView.findViewById(R.id.iv_image_post)
             tvLikesCounter = itemView.findViewById(R.id.tv_likes_counter)
             tvCaption = itemView.findViewById(R.id.tv_caption)
+            tvPostCreationTime = itemView.findViewById(R.id.tv_post_creation_time)
         }
 
         // implement bind method which will associate the data with the correct views in the layout
@@ -38,6 +38,7 @@ class PostAdapter (private val context: Context, private val posts: List<Post>) 
             tvPostOwnerUsername.text = post.getUser()?.username
             // tvLikesCounter.text = ""  // comment for now. todo: add like counter to database and insert here later
             tvCaption.text = "${post.getUser()?.username} ${post.getCaption()}"
+            tvPostCreationTime.text = post.getCreationTime()
 
             // populate image views
             Glide.with(itemView.context).load(post.getImage()?.url).into(ivImagePost)
