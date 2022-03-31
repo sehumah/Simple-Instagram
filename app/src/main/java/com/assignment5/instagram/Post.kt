@@ -17,7 +17,7 @@ class Post : ParseObject() {
         private const val KEY_CAPTION = "caption"
         private const val KEY_IMAGE = "image"
         const val KEY_USER = "user"
-        private const val KEY_CREATION_TIME = "time"
+        private const val KEY_CREATION_TIME = "post creation time"
     }
 
     // Every post has a caption, image & a user. create getters & setters for those fields
