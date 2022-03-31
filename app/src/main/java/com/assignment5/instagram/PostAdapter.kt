@@ -38,7 +38,7 @@ class PostAdapter (private val context: Context, private val posts: List<Post>) 
             tvPostOwnerUsername.text = post.getUser()?.username
             // tvLikesCounter.text = ""  // comment for now. todo: add like counter to database and insert here later
             tvCaption.text = "${post.getUser()?.username} ${post.getCaption()}"
-            tvPostCreationTime.text = post.getCreationTime()
+            tvPostCreationTime.text = post.createdAt.toString()  // set the post's creation time with the createdAt method from ParseObject
 
             // populate image views
             Glide.with(itemView.context).load(post.getImage()?.url).into(ivImagePost)
