@@ -64,6 +64,8 @@ open class HomeFragment : Fragment() {
             android.R.color.holo_red_light
         )
 
+        queryForPosts()
+
         /**
          * Step-by-Step Guide to Populate Any RecyclerView
          * -----------------------------------------------
@@ -74,7 +76,7 @@ open class HomeFragment : Fragment() {
          *  4. Set adapter on RecyclerView
          *  5. Set layout manager on RecyclerView
          */
-        queryForPosts()
+
     }
 
 
