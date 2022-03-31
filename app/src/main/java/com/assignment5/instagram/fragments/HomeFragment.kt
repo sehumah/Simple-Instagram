@@ -77,7 +77,7 @@ open class HomeFragment : Fragment() {
                 if (e == null) {
                     if (postObjects != null) {
                         for (post in postObjects) {
-                            Log.i(TAG, "Post: ${post.getCaption()}, username: ${post.getUser()?.username}")
+                            Log.i(TAG, "Post: $post")
                         }
                         // add all retrieved posts to the list of posts
                         allPosts.addAll(postObjects)
@@ -92,5 +92,4 @@ open class HomeFragment : Fragment() {
             }
         })
     }
-
 }
