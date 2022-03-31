@@ -68,6 +68,9 @@ open class HomeFragment : Fragment() {
         // find all post objects in the server
         query.include(Post.KEY_USER)  // return the user object associated with each post
 
+        // return only 20 posts per every request
+        query.limit = 20
+
         // arrange the posts in descending order i.e newer posts will appear first/on the top
         query.addDescendingOrder("createdAt")
 
@@ -77,7 +80,7 @@ open class HomeFragment : Fragment() {
                 if (e == null) {
                     if (postObjects != null) {
                         for (post in postObjects) {
-                            Log.i(TAG, "Post: $post")
+                            Log.i(TAG, "Post: ${post.getCaption()}, username: ${post.getUser()?.username}")
                         }
                         // add all retrieved posts to the list of posts
                         allPosts.addAll(postObjects)

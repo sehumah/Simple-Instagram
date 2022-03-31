@@ -32,9 +32,6 @@ class ProfileFragment : HomeFragment() {
         // find all post objects in the server
         query.include(Post.KEY_USER)  // return the user object associated with each post
 
-        // return only 20 posts per every request
-        query.limit = 20
-
         // line below makes it so that only posts made by the currently signed in user are returned for the profile fragment
         query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser())
 
