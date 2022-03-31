@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.assignment5.instagram.Post
 import com.assignment5.instagram.PostAdapter
 import com.assignment5.instagram.R
@@ -21,6 +22,7 @@ private const val TAG = "HomeFragment"
 open class HomeFragment : Fragment() {
 
     private lateinit var rvPostsFeed: RecyclerView
+    private lateinit var swipeRefreshLayoutContainer: SwipeRefreshLayout
     lateinit var adapter: PostAdapter
     var allPosts: MutableList<Post> = mutableListOf()  // mutable so that I can grab posts from the server and add them to this list
 
@@ -44,6 +46,23 @@ open class HomeFragment : Fragment() {
 
         // set the layout manager
         rvPostsFeed.layoutManager = LinearLayoutManager(requireContext())
+
+        // get reference to the swipe refresh layout
+        swipeRefreshLayoutContainer = view.findViewById(R.id.swipe_refresh_layout_container)
+
+        // setup refresh listener to load new data. todo: implement function to load new data later
+        swipeRefreshLayoutContainer.setOnRefreshListener {
+            // just log something for now
+            Log.i(TAG, "swipe refresh detected")
+        }
+
+        // Configure refreshing colors for SwipeRefreshLayout
+        swipeRefreshLayoutContainer.setColorSchemeResources(
+            android.R.color.holo_blue_bright,
+            android.R.color.holo_green_light,
+            android.R.color.holo_orange_light,
+            android.R.color.holo_red_light
+        )
 
         /**
          * Step-by-Step Guide to Populate Any RecyclerView
