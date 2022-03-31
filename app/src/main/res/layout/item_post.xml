@@ -122,7 +122,7 @@
         android:id="@+id/tv_post_creation_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="10 minutes ago"
+        android:hint="0 minutes ago"
         android:textSize="11sp"
         android:layout_marginBottom="10dp"
         app:layout_constraintStart_toStartOf="@+id/tv_caption"
