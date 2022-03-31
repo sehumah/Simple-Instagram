@@ -20,6 +20,9 @@ import com.assignment5.instagram.R
 import com.parse.ParseFile
 import com.parse.ParseUser
 import java.io.File
+import java.sql.Time
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 class ComposeFragment : Fragment() {
@@ -81,11 +84,14 @@ class ComposeFragment : Fragment() {
 
     // submit user's post to server
     private fun submitPost(caption: String, user: ParseUser, photoFile: File) {
+
         // create the post object to send to the server
         val post = Post()
         post.setImage(ParseFile(photoFile))
         post.setCaption(caption)
         post.setUser(user)
+
+        // save the post to the server
         post.saveInBackground { exception ->
             if (exception != null) {  // something's gone wrong
                 Toast.makeText(requireContext(), "Something went wrong. Couldn't save post!", Toast.LENGTH_SHORT).show()
