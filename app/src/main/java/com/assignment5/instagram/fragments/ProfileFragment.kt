@@ -32,7 +32,10 @@ class ProfileFragment : HomeFragment() {
         // find all post objects in the server
         query.include(Post.KEY_USER)  // return the user object associated with each post
 
-        // line below makes it so that only posts made by the currently signed in user are returned
+        // return only 20 posts per every request
+        query.limit = 20
+
+        // line below makes it so that only posts made by the currently signed in user are returned for the profile fragment
         query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser())
 
         // arrange the posts in descending order i.e newer posts will appear first/on the top
