@@ -52,6 +52,7 @@ open class HomeFragment : Fragment() {
 
         // setup refresh listener to load new data. todo: implement function to load new data later
         swipeRefreshLayoutContainer.setOnRefreshListener {
+            queryForPosts()
             // just log something for now
             Log.i(TAG, "swipe refresh detected")
         }
@@ -108,6 +109,9 @@ open class HomeFragment : Fragment() {
 
                         // notify the adapter of a dataset change
                         adapter.notifyDataSetChanged()
+
+                        // set the swipe refreshing to false
+                        swipeRefreshLayoutContainer.isRefreshing = false
                     }
                 }
                 else {
