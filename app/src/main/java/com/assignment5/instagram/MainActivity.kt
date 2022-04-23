@@ -81,19 +81,12 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_logout) {
 
-            // log the current user out if they click the logout button
+            // log the current user out if they click the logout button & navigate to login/signup screen
             ParseUser.logOut()
-            val currentUser: ParseUser = ParseUser.getCurrentUser()  // this will now be null
-
-            /*
-            // todo: navigating to login activity after logging out doesn't seem to be working so far, figure it out later
-             then navigate to login/signup screen
-             val intent = Intent(this@MainActivity, LoginActivity::class.java)
-             startActivity(intent)
-
-             // just implement a toast for now
-             Toast.makeText(this, "Logout button clicked!", Toast.LENGTH_SHORT).show()
-            */
+            val intent = Intent(this, LoginActivity::class.java)
+            Toast.makeText(this, "Successfully logged out!", Toast.LENGTH_SHORT).show()
+            startActivity(intent)
+            finish()
         }
         else if (item.itemId == R.id.action_compose) {  // listen for clicks on the compose button in the top menu
             // show the compose fragment
