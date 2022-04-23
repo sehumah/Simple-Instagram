@@ -104,9 +104,6 @@ class MainActivity : AppCompatActivity() {
 
 /**
  * Suggestions for improvement:
- *  1. currently, the main activity screen is relaunched upon submitting a post but what should
- *      actually happen is setting the imagefield and the caption field to empty instead.
- *
- *  2. the app crushes after logging the second user out, reach out to TAs and seek help to prevent
+ *  1. the app crushes after logging the second user out, reach out to TAs and seek help to prevent
  *      this from happening later on
  */
