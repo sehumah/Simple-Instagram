@@ -67,6 +67,10 @@ class ComposeFragment : Fragment() {
             }
             else if (photoFile != null && caption != "") {  // both fields are filled, submit the post
                 submitPost(caption, user, photoFile!!)
+
+                // set caption & image fields to be empty
+                view.findViewById<EditText>(R.id.et_caption).setText("")
+                ivImagePost.setImageResource(0)
             }
             else {  // some other error
                 Toast.makeText(requireContext(), "Error sending post. Please try again later!", Toast.LENGTH_SHORT).show()
